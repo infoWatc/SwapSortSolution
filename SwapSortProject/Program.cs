@@ -1,4 +1,4 @@
-﻿//Sort
+﻿// Insertion Sort
 using System;
 using System.Linq;
 
@@ -10,44 +10,46 @@ namespace Sort
         // Ascending 
         public static void Ascending(decimal[] array0)
         {
-            for (int i = 0; i <= array0.Length - 1; i++)
-            {
-                // Temp int variable to hold value in
-                decimal key;
+            int i, j;
+            decimal key;
 
-                // Swap out adjacent value by order,
-                // till completed.
-                for (int j = 0; j < array0.Length - 1; j++)
+            for (i = 1; i < array0.Length; i++)
+            {
+                key = array0[i];
+                j = i - 1;
+
+                /* Move elements of array0[0..i-1], that are
+                greater than key, to one position ahead
+                of their current position */
+                while (j >= 0 && array0[j] > key)
                 {
-                    if (array0[j] > array0[j + 1])
-                    {
-                        key = array0[j + 1];
-                        array0[j + 1] = array0[j];
-                        array0[j] = key;
-                    }
+                    array0[j + 1] = array0[j];
+                    j = j - 1;
                 }
+                array0[j + 1] = key;
             }
         }
 
         // Descending
         public static void Decending(decimal[] array1)
         {
-            for (int i = 0; i <= array1.Length - 1; i++)
-            {
-                // key int variable to hold value in
-                decimal key;
+            int i, j;
+            decimal key;
 
-                // Swap out adjacent value by order,
-                // till completed.
-                for (int j = 0; j < array1.Length - 1; j++)
+            for (i = 1; i < array1.Length; i++)
+            {
+                key = array1[i];
+                j = i - 1;
+
+                /* Move elements of array1[0..i-1], that are
+                less than key, to one position ahead
+                of their current position */
+                while (j >= 0 && array1[j] < key)
                 {
-                    if (array1[j] < array1[j + 1])
-                    {
-                        key = array1[j + 1];
-                        array1[j + 1] = array1[j];
-                        array1[j] = key;
-                    }
+                    array1[j + 1] = array1[j];
+                    j = j - 1;
                 }
+                array1[j + 1] = key;
             }
         }
     }
